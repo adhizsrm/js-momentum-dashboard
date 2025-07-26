@@ -64,7 +64,11 @@ navigator.geolocation.getCurrentPosition((position) => {
     })
     .then((data) => {
       const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-      document.getElementById("weather").innerHTML = `<img src=${iconUrl} />`;
+      document.getElementById("weather").innerHTML = `
+        <img src=${iconUrl} />
+        <p>${Math.round(data.main.temp)}ºC</p>
+        <p>${data.name}</p>
+      `;
     })
     .catch((err) => console.error(err));
 });
